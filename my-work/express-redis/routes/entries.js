@@ -11,3 +11,7 @@ exports.list = (req, res, next) => {
         })
     })
 }
+
+exports.form = (req,res)=>{
+    res.render('post',{title:'post'})
+}

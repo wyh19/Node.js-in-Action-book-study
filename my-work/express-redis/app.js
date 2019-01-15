@@ -24,6 +24,8 @@ app.use('/',routes)
 app.use('/users',users)
 app.get('/entries',entries.list)
 
+app.get('/post',entries.form)
+
 
 app.use((req,res,next)=>{
     const err = new Error('Not Found')
