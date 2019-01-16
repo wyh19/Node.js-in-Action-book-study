@@ -16,7 +16,7 @@ exports.required = (field) => {
         if(getField(req,field)){
             next()
         }else{
-            res.error(`${field.join(' ')} is required`)
+            res.end(`${field.join(' ')} is required`)
             res.redirect('back')
         }
     }
@@ -28,7 +28,7 @@ exports.lengthAbove = (field, len) => {
       if (getField(req, field).length > len) {
         next();
       } else {
-        res.error(`${field.join(' ')} must have more than ${len} characters`);
+        res.end(`${field.join(' ')} must have more than ${len} characters`);
         res.redirect('back');
       }
     }
