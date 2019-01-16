@@ -20,9 +20,11 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
-app.use('/', routes)
+// app.use('/', routes)
 app.use('/users', users)
 app.get('/entries', entries.list)
+
+app.get('/',entries.list)
 
 app.get('/post', entries.form)
 app.post('/post', entries.submit)
