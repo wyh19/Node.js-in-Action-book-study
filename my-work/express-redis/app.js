@@ -3,6 +3,7 @@ const path = require('path')
 const logger = require('morgan')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
+const validate = require('./middleware/validate')
 
 const routes = require('./routes/index')
 const entries = require('./routes/entries')
@@ -27,7 +28,7 @@ app.get('/entries', entries.list)
 app.get('/',entries.list)
 
 app.get('/post', entries.form)
-app.post('/post', entries.submit)
+app.post('/post',validate.required('entry[title]'),validate.lengthAbove('entry[title]',4), entries.submit)
 
 
 app.use((req, res, next) => {
